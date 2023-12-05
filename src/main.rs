@@ -23,9 +23,8 @@ fn get_puzzle_input(day: u8) -> Result<String, Error> {
     if Path::new(format!("data/{}.txt", day).as_str()).try_exists().unwrap() {
         let data = std::fs::read_to_string(format!("data/{}.txt", day))
             .expect("Failed to read file");
-        return Ok(data);
-    }
-    else {
+        Ok(data)
+    } else {
         println!("Fetching input for day {}...", day);
         let session_cookie = std::env::var("SESSION_COOKIE")
             .expect("SESSION_COOKIE not set");
@@ -33,7 +32,7 @@ fn get_puzzle_input(day: u8) -> Result<String, Error> {
         let url = format!("https://adventofcode.com/2023/day/{}/input", day);
         let client = Client::new();
         let cookie = HeaderValue::from_str(&session_cookie).unwrap();
-        let response = client.get(&url)
+        let response = client.get(url)
             .header(COOKIE, cookie)
             .send()?
             .text()?;
@@ -42,5 +41,4 @@ fn get_puzzle_input(day: u8) -> Result<String, Error> {
         std::fs::write(format!("data/{}.txt", day).as_str(), &response).unwrap();
         Ok(response)
     }
-
 }

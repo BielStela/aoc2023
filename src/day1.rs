@@ -24,7 +24,7 @@ pub fn part1(input: &str) -> u32 {
     let mut sum = 0;
     for line in input.lines() {
         let line_nums: String = line.chars()
-            .filter(|c| c.is_digit(10))
+            .filter(|c| c.is_ascii_digit())
             .collect::<String>();
         let first = line_nums.chars().next().unwrap();
         let last = line_nums.chars().last().unwrap();

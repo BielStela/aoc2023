@@ -25,12 +25,12 @@ impl Game {
 fn parse_lines(input: &str) -> Vec<Game> {
     let mut games = Vec::new();
     for line in input.lines() {
-        let parts = line.split(":").collect::<Vec<&str>>();
-        let id = parts[0].split(" ").collect::<Vec<&str>>()[1].parse::<u32>().unwrap();
+        let parts = line.split(':').collect::<Vec<&str>>();
+        let id = parts[0].split(' ').collect::<Vec<&str>>()[1].parse::<u32>().unwrap();
         let mut game = Game::new(id, 0, 0, 0);
-        for cube_set in parts[1].split(";") {
-            cube_set.trim().split(",").for_each(|cube| {
-                let cube = cube.trim().split(" ").collect::<Vec<&str>>();
+        for cube_set in parts[1].split(';') {
+            cube_set.trim().split(',').for_each(|cube| {
+                let cube = cube.trim().split(' ').collect::<Vec<&str>>();
                 let color = cube[1].trim();
                 let count = cube[0].trim().parse::<u32>().unwrap();
                 match color {
@@ -79,11 +79,11 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"#;
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1(&TEST_INPUT), 8);
+        assert_eq!(part1(TEST_INPUT), 8);
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2(&TEST_INPUT), 2286);
+        assert_eq!(part2(TEST_INPUT), 2286);
     }
 }
