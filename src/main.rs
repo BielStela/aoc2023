@@ -5,6 +5,7 @@ use reqwest::header::{COOKIE, HeaderValue};
 
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     let day1_input = get_puzzle_input(1).unwrap();
@@ -14,6 +15,12 @@ fn main() {
     let day2_input = get_puzzle_input(2).unwrap();
     println!("Day 2.1: {}", day2::part1(&day2_input));
     println!("Day 2.2: {}", day2::part2(&day2_input));
+
+    let day3_input = get_puzzle_input(3).unwrap();
+    println!("Day 3.1: {}", day3::part1(&day3_input));
+    println!("Day 3.2: {}", day3::part2(&day3_input));
+
+
 }
 
 
